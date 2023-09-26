@@ -3,7 +3,8 @@
 local helpers = require("../helpers")
 
 -- undo clipboard settings from LazyVim
-vim.g.clipboard = nil
+vim.opt.clipboard = ""
+
 -- if in WSL add Windows clipboard integration
 if helpers.iswsl then
   vim.g.clipboard = {
