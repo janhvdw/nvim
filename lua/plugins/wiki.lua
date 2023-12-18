@@ -35,7 +35,7 @@ return {
       require("telekasten").setup(opts)
       vim.keymap.set("n", "<leader>kp", ":Telekasten panel<CR>", { desc = "Command Panel" })
       vim.keymap.set("n", "<leader>kv", ":Telekasten switch_vault<CR>", { desc = "" })
-      vim.keymap.set("n", "<c-Space>", ":lua require('telekasten').toggle_todo()<CR>", { desc = "" })
+      vim.keymap.set("n", "<c-Space>", ":lua require('telekasten').toggle_todo()<CR>", { desc = "Switch vaults" })
       vim.keymap.set("v", "<c-Space>", ":lua require('telekasten').toggle_todo({ v = true })<CR>", { desc = "" })
 
       -- from suggested
