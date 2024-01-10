@@ -1,8 +1,9 @@
--- vim.g.calendar_options = "nornu"
-
+-- Support for windows (not working very well)
 local helpers = require("../helpers")
 
-local HOME = "~"
+-- local HOME = "~"
+-- putting the notes in windows for the sake of obsidian
+local HOME = "/mnt/c/Users/jwesthui"
 if helpers.is_windows then
   HOME = string.gsub(vim.env.HOME, "\\", "/")
 end
@@ -22,12 +23,9 @@ return {
       template_new_note = vim.fn.expand(HOME .. "/kasten/templates/new_note.md"),
       template_new_daily = vim.fn.expand(HOME .. "/kasten/templates/new_daily.md"),
       template_new_weekly = vim.fn.expand(HOME .. "/kasten/templates/new_weekly.md"),
-      command_palette_theme = "ivy",
-      new_note_filename = "title-uuid",
-      filename_space_subst = "_",
       vaults = {
-        personal = {
-          home = vim.fn.expand(HOME .. "/kasten/personal"),
+        windows = {
+          home = vim.fn.expand("/mnt/c/Users/jwesthui/kasten/personal"),
         },
       },
     },
@@ -70,7 +68,7 @@ return {
       )
       vim.keymap.set("n", "<leader>#", ":lua require('telekasten').show_tags()<CR>", { desc = "Show tags" })
 
-      vim.keymap.set("i", "[[", "<ESC>:lua require('telekasten').insert_link({ i=true })")
+      vim.keymap.set("i", "[[", "<ESC>:lua require('telekasten').insert_link({ i=true })<CR>")
     end,
   },
 }

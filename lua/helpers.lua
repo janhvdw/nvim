@@ -7,7 +7,7 @@ local is_mac = vim.fn.has("macunix") == 1
 
 local is_linux = not is_wsl and not is_mac
 
-local is_windows = vim.fn.has("win32")
+local is_windows = vim.fn.has("win32") == 1
 
 return {
   is_wsl = is_wsl,
