@@ -20,4 +20,27 @@ return {
       }
     end,
   },
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function(_, parentOpts)
+      return vim.tbl_extend("keep", parentOpts, {
+        pickers = {
+          buffers = {
+            ignore_current_buffer = true,
+            mappings = {
+              i = {
+                ["<c-d>"] = require("telescope.actions").delete_buffer,
+              },
+              n = {
+                ["d"] = require("telescope.actions").delete_buffer,
+              },
+            },
+          },
+        },
+      })
+    end,
+    config = function(_, opts)
+      require("telescope").setup(opts)
+    end,
+  },
 }
