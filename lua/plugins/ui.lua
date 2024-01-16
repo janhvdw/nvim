@@ -23,6 +23,7 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
+    enabled = false,
     keys = {
       {
         "<leader>b[",
