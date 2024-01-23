@@ -3,7 +3,7 @@ local helpers = require("../helpers")
 
 -- local HOME = "~"
 -- putting the notes in windows for the sake of obsidian
-local HOME = "/mnt/c/Users/jwesthui"
+local HOME = "/Users/janvdw"
 if helpers.is_windows then
   HOME = string.gsub(vim.env.HOME, "\\", "/")
 end
