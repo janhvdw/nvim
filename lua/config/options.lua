@@ -22,7 +22,7 @@ if helpers.iswsl then
 end
 
 if vim.g.neovide == true then
-  vim.g.neovide_scale_factor = 0.8
+  vim.g.neovide_scale_factor = 0.875
   vim.o.guifont = "JetBrainsMono Nerd Font"
   vim.api.nvim_set_keymap(
     "n",

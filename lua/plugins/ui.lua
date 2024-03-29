@@ -1,9 +1,10 @@
 vim.g.material_style = "darker"
 return {
+  { "sainnhe/gruvbox-material" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight-night",
+      colorscheme = vim.g.neovide and "gruvbox-material" or "tokyonight-night",
     },
   },
   {

@@ -11,6 +11,13 @@ return {
         end,
         desc = "Diffview open",
       },
+      {
+        "<leader>gfh",
+        function()
+          require("diffview").open({})
+        end,
+        desc = "Diffview open",
+      },
     },
     opts = function(plugin, opts)
       local actions = require("diffview.actions")
