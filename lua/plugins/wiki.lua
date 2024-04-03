@@ -86,6 +86,13 @@ return {
         prepend_note_id = false,
         prepend_note_path = true,
       },
+      wiki_link_func = function(opts)
+        if opts.label ~= opts.path then
+          return string.format("[[%s|%s]]", opts.path, opts.label)
+        else
+          return string.format("[[%s]]", opts.path)
+        end
+      end,
       note_id_func = function(title)
         -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
         -- In this case a note with the title 'My new note' will be given an ID that looks
