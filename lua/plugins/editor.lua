@@ -37,14 +37,23 @@ return {
         },
       })
     end,
-    --    -- stylua: ignore
   },
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      {
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
+      },
+      {
+        "debugloop/telescope-undo.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+      },
+    },
     opts = function(_, parentOpts)
       local fb_actions = require("telescope._extensions.file_browser.actions")
 
-      local ts_select_dir_for_grep = function(prompt_bufnr)
+      local ts_select_dir_for_grep = function(_)
         local action_state = require("telescope.actions.state")
         local fb = require("telescope").extensions.file_browser
         local live_grep = require("telescope.builtin").live_grep
@@ -53,7 +62,7 @@ return {
         fb.file_browser({
           files = false,
           depth = false,
-          attach_mappings = function(prompt_bufnr)
+          attach_mappings = function(_)
             require("telescope.actions").select_default:replace(function()
               local entry_path = action_state.get_selected_entry().Path
               local dir = entry_path:is_dir() and entry_path or entry_path:parent()
@@ -114,8 +123,14 @@ return {
       local telescope = require("telescope")
       telescope.load_extension("file_browser")
       telescope.setup(opts)
-      vim.keymap.set("n", "<leader>fb", ":Telescope file_browser<CR>", { desc = "Command Panel" })
-      vim.keymap.set("n", "<leader>fB", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { desc = "" })
+      vim.keymap.set("n", "<leader>fb", ":Telescope file_browser<CR>", { desc = "File Browser" })
+      vim.keymap.set(
+        "n",
+        "<leader>fB",
+        ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+        { desc = "File Browser(pwd)" }
+      )
+      vim.keymap.set("n", "<leader>fu", ":Telescope undo<CR>", { desc = "Undo" })
     end,
   },
   {
