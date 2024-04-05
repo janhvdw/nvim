@@ -29,8 +29,8 @@ return {
           path = "~/vaults/personal",
         },
         {
-          name = "work",
-          path = "~/vaults/work",
+          name = "private",
+          path = "~/vaults/private",
         },
       },
       daily_notes = {
