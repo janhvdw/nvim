@@ -10,6 +10,7 @@ return {
       { "<leader>odt", "<cmd>ObsidianToday<cr>", desc = "Open daily not for today" },
       { "<leader>ody", "<cmd>ObsidianYesterday<cr>", desc = "Open daily not for yesterday" },
       { "<leader>odm", "<cmd>ObsidianTomorrow<cr>", desc = "Open daily not for tomorrow" },
+      { "<leader>odd", "<cmd>ObsidianDailies -20 5", desc = "Daily note picker" },
     },
     dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp", "nvim-telescope/telescope.nvim" },
     opts = {
@@ -70,6 +71,18 @@ return {
         ["<leader>os"] = {
           action = "<cmd>ObsidianQuickSwitch<cr>",
           opts = { desc = "Search for a note" },
+        },
+        ["<leader>ot"] = {
+          action = "<cmd>ObsidianTags<cr>",
+          opts = { desc = "Pick tag search by" },
+        },
+        ["<leader>ob"] = {
+          action = "<cmd>ObsidianBacklinks<cr>",
+          opts = { desc = "Search back links" },
+        },
+        ["<leader>oi"] = {
+          action = "<cmd>ObsidianPastImage<cr>",
+          opts = { desc = "Paste image" },
         },
       },
       completion = {
