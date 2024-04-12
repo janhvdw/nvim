@@ -59,17 +59,17 @@ return {
         },
         ["<leader>ol"] = {
           action = "<cmd>ObsidianLink<cr>",
-          opts = { desc = "link selected text" },
+          opts = { desc = "Link selected text" },
         },
         ["<leader>oL"] = {
           action = "<cmd>ObsidianLinks<cr>",
-          opts = { desc = "link selected text" },
+          opts = { desc = "Open picker with all links in buffer" },
         },
-        ["<leader>of"] = {
+        ["<leader>os"] = {
           action = "<cmd>ObsidianSearch<cr>",
           opts = { desc = "Search for a note" },
         },
-        ["<leader>os"] = {
+        ["<leader>of"] = {
           action = "<cmd>ObsidianQuickSwitch<cr>",
           opts = { desc = "Search for a note" },
         },
@@ -85,10 +85,6 @@ return {
           action = "<cmd>ObsidianPastImage<cr>",
           opts = { desc = "Paste image" },
         },
-      },
-      completion = {
-        prepend_note_id = false,
-        prepend_note_path = true,
       },
       wiki_link_func = function(opts)
         if opts.label ~= opts.path then
