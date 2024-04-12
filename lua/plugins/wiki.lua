@@ -6,6 +6,7 @@ return {
     event = {
       "BufReadPre " .. vim.fn.expand("~") .. "/vaults/**.md",
     },
+    cmd = "ObsidianWorkspace",
     keys = {
       { "<leader>odt", "<cmd>ObsidianToday<cr>", desc = "Open daily not for today" },
       { "<leader>ody", "<cmd>ObsidianYesterday<cr>", desc = "Open daily not for yesterday" },
@@ -17,11 +18,11 @@ return {
       workspaces = {
         {
           name = "personal",
-          path = "~/vaults/personal",
+          path = vim.fn.expand("~") .. "/vaults/personal/",
         },
         {
           name = "private",
-          path = "~/vaults/private",
+          path = vim.fn.expand("~") .. "/vaults/private",
         },
       },
       daily_notes = {
