@@ -118,6 +118,13 @@ return {
       vim.o.conceallevel = 2
       require("obsidian").setup(opts)
       vim.keymap.set("v", "<leader>ol", "<cmd>'<,'>ObsidianLink<cr>", { desc = "link selected text" })
+      -- columns and wrap is needed to preserve pipetables layout
+      vim.keymap.set(
+        "v",
+        "<leader>mt",
+        "<cmd>'<,'>!pandoc -t markdown-simple_tables --columns=999 --wrap=none<cr>",
+        { desc = "Format markdown table" }
+      )
     end,
   },
 }
