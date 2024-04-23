@@ -1,4 +1,20 @@
 return {
+  -- {
+  --   "williamboman/mason.nvim",
+  --   opts = function(_, opts)
+  --     opts.ensure_installed = opts.ensure_installed or {}
+  --     vim.list_extend(opts.ensure_installed, { "vale" })
+  --   end,
+  -- },
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   optional = true,
+  --   opts = {
+  --     linters_by_ft = {
+  --       markdown = { "vale", "markdownlint" },
+  --     },
+  --   },
+  -- },
   {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
@@ -11,7 +27,7 @@ return {
       { "<leader>odt", "<cmd>ObsidianToday<cr>", desc = "Open daily not for today" },
       { "<leader>ody", "<cmd>ObsidianYesterday<cr>", desc = "Open daily not for yesterday" },
       { "<leader>odm", "<cmd>ObsidianTomorrow<cr>", desc = "Open daily not for tomorrow" },
-      { "<leader>odd", "<cmd>ObsidianDailies -20 5", desc = "Daily note picker" },
+      { "<leader>odd", "<cmd>ObsidianDailies -30 31<cr>", desc = "Daily note picker" },
     },
     dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp", "nvim-telescope/telescope.nvim" },
     opts = {
@@ -22,7 +38,7 @@ return {
         },
         {
           name = "private",
-          path = vim.fn.expand("~") .. "/vaults/private",
+          path = vim.fn.expand("~") .. "/vaults/private/",
         },
       },
       daily_notes = {
@@ -100,7 +116,7 @@ return {
         local suffix = ""
         if title ~= nil then
           -- If title is given, transform it into valid file name.
-          suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+          suffix = title:gsub(" ", "-"):gsub("[^A-Za-z1-9-]", ""):lower()
         else
           -- If title is nil, just add 4 random uppercase letters to the suffix.
           for _ = 1, 4 do
