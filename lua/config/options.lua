@@ -24,6 +24,7 @@ end
 if vim.g.neovide == true then
   vim.g.neovide_scale_factor = 0.875
   vim.o.guifont = "JetBrainsMono Nerd Font"
+  vim.g.neovide_input_macos_alt_is_meta = true
   vim.api.nvim_set_keymap(
     "n",
     "<C-+>",
