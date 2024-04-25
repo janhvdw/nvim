@@ -98,7 +98,7 @@ return {
           opts = { desc = "Search back links" },
         },
         ["<leader>oi"] = {
-          action = "<cmd>ObsidianPastImage<cr>",
+          action = "<cmd>ObsidianPasteImg<cr>",
           opts = { desc = "Paste image" },
         },
       },
@@ -129,7 +129,8 @@ return {
     config = function(_, opts)
       vim.o.conceallevel = 2
       require("obsidian").setup(opts)
-      vim.keymap.set("v", "<leader>ol", "<cmd>'<,'>ObsidianLink<cr>", { desc = "link selected text" })
+      vim.keymap.set("v", "<leader>ol", "<cmd>'<,'>ObsidianLink<cr>", { desc = "Link selected text" })
+      vim.keymap.set("v", "<leader>oe", "<cmd>'<,'>ObsidianExtractNote<cr>", { desc = "Extract Note" })
       -- columns and wrap is needed to preserve pipetables layout
       vim.keymap.set(
         "v",
