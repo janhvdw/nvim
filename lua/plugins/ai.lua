@@ -15,8 +15,16 @@ return {
             require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
           end
         end,
-        desc = "CopilotChat - Quick chat",
+        mode = { "n", "v" },
+        desc = "Quick chat",
       },
+      {
+        "<leader>cpc",
+        "<cmd>CopilotChatToggle<cr>",
+        mode = { "n", "v" },
+        desc = "Toggle chat",
+      },
+      -- TODO add actual code mappings like Explain and Review
     },
     opts = {
       debug = true, -- Enable debugging
