@@ -9,3 +9,6 @@ vim.keymap.set("n", "<M-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decreas
 vim.keymap.set("n", "<M-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 vim.keymap.set({ "n", "v" }, "Y", '"*y', { desc = "Yank to clipboard register" })
+
+vim.keymap.set({ "n" }, "gl", "`[v`]", { desc = "Select last yanked or changed text" })
+vim.keymap.set({ "n" }, "gL", "`[V`]", { desc = "Select last yanked or changed text block wise" })
