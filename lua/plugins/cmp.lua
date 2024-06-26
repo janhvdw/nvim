@@ -10,33 +10,34 @@ return {
       return opts
     end,
   },
-  {
-    "L3MON4D3/LuaSnip",
-    keys = function()
-      return {
-        {
-          "<C-l>",
-          function()
-            local luasnip = require("luasnip")
-            if luasnip.expand_or_jumpable() then
-              return luasnip.expand_or_jump(1)
-            end
-          end,
-          expr = true,
-          silent = true,
-          mode = { "i", "s" },
-        },
-        {
-          "<C-h>",
-          function()
-            local luasnip = require("luasnip")
-            if luasnip.jumpable then
-              require("luasnip").jump(-1)
-            end
-          end,
-          mode = { "i", "s" },
-        },
-      }
-    end,
-  },
+  -- {
+  --   "L3MON4D3/LuaSnip",
+  --   keys = function()
+  --     return {
+  --       {
+  --         "<C-O>",
+  --         function()
+  --           local luasnip = require("luasnip")
+  --           vim.print("expand_or_jumpable" .. luasnip.expand_or_jumpable())
+  --           if luasnip.expand_or_jumpable() then
+  --             return luasnip.expand_or_jump(1)
+  --           end
+  --         end,
+  --         expr = true,
+  --         silent = true,
+  --         mode = { "i", "s" },
+  --       },
+  --       {
+  --         "<C-I>",
+  --         function()
+  --           local luasnip = require("luasnip")
+  --           if luasnip.jumpable then
+  --             require("luasnip").jump(-1)
+  --           end
+  --         end,
+  --         mode = { "i", "s" },
+  --       },
+  --     }
+  --   end,
+  -- },
 }
