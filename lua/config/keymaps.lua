@@ -13,5 +13,6 @@ vim.keymap.set({ "n", "v" }, "Y", '"*y', { desc = "Yank to clipboard register" }
 vim.keymap.set({ "n" }, "gl", "`[v`]", { desc = "Select last yanked or changed text" })
 vim.keymap.set({ "n" }, "gL", "`[V`]", { desc = "Select last yanked or changed text block wise" })
 
-vim.keymap.set({ "n" }, "<leader>by", '<cmd>let @"=@%<cr>', { desc = "Yank file path relative to root" })
+vim.keymap.set({ "n" }, "<leader>by", "<cmd>let @\"=expand('%:.')<cr>", { desc = "Yank file path relative to root" })
 vim.keymap.set({ "n" }, "<leader>bY", "<cmd>let @\"=expand('%:p')<cr>", { desc = "Yank absolute file path" })
+vim.keymap.set({ "n" }, "<leader>bn", "<cmd>let @\"=expand('%:t')<cr>", { desc = "Yank filename of current buffer" })
