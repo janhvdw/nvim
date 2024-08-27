@@ -14,3 +14,16 @@ end
 --     print(string.format("event fired: %s", vim.inspect(ev.data)))
 --   end,
 -- })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("keymap_for_http"),
+  pattern = { "http" },
+  callback = function()
+    vim.keymap.set(
+      { "n" },
+      "<leader><cr>",
+      "<cmd>lua require('kulala').run()<cr>",
+      { desc = "Send the http request", buffer = true }
+    )
+  end,
+})
