@@ -81,7 +81,7 @@ return {
         })
       end
 
-      return vim.tbl_extend("keep", parentOpts, {
+      return vim.tbl_extend("force", parentOpts, {
         pickers = {
           buffers = {
             ignore_current_buffer = true,
