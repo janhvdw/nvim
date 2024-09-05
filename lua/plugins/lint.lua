@@ -1,15 +1,19 @@
 return {
   {
     "mfussenegger/nvim-lint",
-    opts = function(_, opts)
-      -- Add ignore for line length rule
-      return vim.tbl_deep_extend("force", opts, {
-        linters = {
-          markdownlint = {
-            args = { "--disable", "MD013", "--" },
-          },
+    -- Add ignore for line length rule
+    opts = {
+      linters_by_ft = {
+        markdown = { "markdownlint" },
+      },
+      linters = {
+        ["markdownlint"] = {
+          args = { "--disable", "MD013", "MD024", "--" },
         },
-      })
-    end,
+        ["markdownlint-cli2"] = {
+          args = { "--disable", "MD013", "MD024", "--" },
+        },
+      },
+    },
   },
 }
