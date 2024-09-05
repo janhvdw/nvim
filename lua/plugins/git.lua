@@ -5,18 +5,21 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
       {
-        "<leader>gd",
+        "<leader>gdd",
         function()
           require("diffview").open({})
         end,
         desc = "Diffview open",
       },
       {
-        "<leader>gfh",
-        function()
-          require("diffview").open({})
-        end,
-        desc = "Diffview open",
+        "<leader>gdh",
+        "<cmd>DiffviewFileHistory %<cr>",
+        desc = "Open file history for current file",
+      },
+      {
+        "<leader>gdH",
+        "<cmd>DiffviewFileHistory<cr>",
+        desc = "Open file history for project",
       },
     },
     opts = function(plugin, opts)
