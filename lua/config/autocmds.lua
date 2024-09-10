@@ -27,3 +27,22 @@ vim.api.nvim_create_autocmd("FileType", {
     )
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("keymap_for_markdown"),
+  pattern = { "markdown" },
+  callback = function()
+    vim.keymap.set(
+      "v",
+      "<leader>cj",
+      "<esc><cmd>'<,'>!pandoc --from markdown-auto_identifiers -t jira --columns=999 --wrap=none<cr>",
+      { desc = "Format for jira", buffer = true }
+    )
+    -- vim.keymap.set(
+    --   "v",
+    --   "<leader>mJ",
+    --   "<cmd>'<,'>!pandoc --from markdown-auto_identifiers -t jira --columns=999 --wrap=none<cr>gvV\"+y",
+    --   { desc = "Convert selected text to jira format, yank, and undo" }
+    -- )
+  end,
+})
