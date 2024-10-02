@@ -38,6 +38,7 @@ vim.api.nvim_create_autocmd("FileType", {
       "<esc><cmd>'<,'>!pandoc --from markdown-auto_identifiers -t jira --columns=999 --wrap=none<cr>",
       { desc = "Format for jira", buffer = true }
     )
+    vim.keymap.set({ "n" }, "<leader>cp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Toggle MarkdownPreview" })
     -- vim.keymap.set(
     --   "v",
     --   "<leader>mJ",
