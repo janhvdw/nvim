@@ -4,6 +4,16 @@ return {
     opts = function(_, opts)
       local cmp = require("cmp")
       opts.mapping = cmp.mapping.preset.insert({
+        ["<c-l"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Insert,
+        }),
+        ["<c-h>"] = cmp.mapping.abort(),
+        ["<C-j>"] = cmp.mapping.select_next_item({
+          behavior = cmp.ConfirmBehavior.Insert,
+        }),
+        ["<C-k>"] = cmp.mapping.select_prev_item({
+          behavior = cmp.ConfirmBehavior.Insert,
+        }),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
       })
