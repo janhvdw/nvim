@@ -1,20 +1,20 @@
 return {
-  -- {
-  --   "williamboman/mason.nvim",
-  --   opts = function(_, opts)
-  --     opts.ensure_installed = opts.ensure_installed or {}
-  --     vim.list_extend(opts.ensure_installed, { "vale" })
-  --   end,
-  -- },
-  -- {
-  --   "mfussenegger/nvim-lint",
-  --   optional = true,
-  --   opts = {
-  --     linters_by_ft = {
-  --       markdown = { "vale", "markdownlint" },
-  --     },
-  --   },
-  -- },
+  -- Disable render markdown in favour of Obsidian.nvim ui
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = {},
+    opts = {
+      checkbox = {
+        -- Turn on / off checkbox state rendering
+        enabled = true,
+        position = "overlay",
+        custom = {
+          inProgress = { raw = "[>]", rendered = "󰦕 ", highlight = "RenderMarkdownInfo" },
+          wontDo = { raw = "[~]", rendered = "❌ ", highlight = "RenderMarkdownError" },
+        },
+      },
+    },
+  },
   {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
@@ -104,17 +104,17 @@ return {
       },
       ui = {
         enable = false,
-        checkboxes = {
-          -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-          [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-          ["x"] = { char = "", hl_group = "ObsidianDone" },
-          [">"] = { char = "", hl_group = "ObsidianRightArrow" },
-          ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
-          ["!"] = { char = "", hl_group = "ObsidianImportant" },
-          -- Replace the above with this if you don't have a patched font:
-          -- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
-          -- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
-        },
+        -- checkboxes = {
+        --   -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
+        --   [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+        --   ["x"] = { char = "", hl_group = "ObsidianDone" },
+        --   [">"] = { char = "", hl_group = "ObsidianRightArrow" },
+        --   ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+        --   ["!"] = { char = "", hl_group = "ObsidianImportant" },
+        --   -- Replace the above with this if you don't have a patched font:
+        --   -- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
+        --   -- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
+        -- },
       },
       wiki_link_func = function(opts)
         if opts.label ~= opts.path then
