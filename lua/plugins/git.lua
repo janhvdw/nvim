@@ -31,6 +31,7 @@ return {
             -- The `view` bindings are active in the diff buffers, only when the current
             -- tabpage is a Diffview.
             { "n", "<tab>", actions.select_next_entry, { desc = "Open the diff for the next file" } },
+            { "n", "<leader>dw", "<cmd>w | Git add %<cr>", { desc = "Write and stage current file" } },
             {
               "n",
               "<s-tab>",
