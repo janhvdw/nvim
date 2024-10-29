@@ -1,19 +1,66 @@
 return {
   -- Disable render markdown in favour of Obsidian.nvim ui
+  { "MeanderingProgrammer/render-markdown.nvim", enabled = false },
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    ft = {},
-    opts = {
-      checkbox = {
-        -- Turn on / off checkbox state rendering
-        enabled = true,
-        position = "overlay",
-        custom = {
-          inProgress = { raw = "[>]", rendered = "󰦕 ", highlight = "RenderMarkdownInfo" },
-          wontDo = { raw = "[~]", rendered = "❌ ", highlight = "RenderMarkdownError" },
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    opts = function()
+      local presets = require("markview.presets")
+      return {
+        hybrid_modes = { "n" },
+        checkboxes = vim.tbl_deep_extend("force", presets.checkboxes.nerd, {
+          custom = {
+            {
+              match_string = "-",
+              text = "",
+              hl = "MarkviewCheckboxPending",
+            },
+            {
+              match_string = ">",
+              text = "",
+              hl = "MarkviewCheckboxProgress",
+            },
+            {
+              match_string = "~",
+              text = "",
+              hl = "MarkviewCheckboxCancelled",
+            },
+          },
+        }),
+
+        list_items = {
+          ---+ ${class, List items}
+          enable = true,
+          indent_size = 2,
+          shift_width = 2,
+
+          marker_minus = {
+            add_padding = false,
+            text = "•",
+            hl = "MarkviewListItemMinus",
+          },
+          marker_plus = {
+            add_padding = false,
+            text = "‣",
+            hl = "MarkviewListItemPlus",
+          },
+
+          marker_star = {
+            add_padding = false,
+            text = "⚝",
+            hl = "MarkviewListItemStar",
+          },
+          marker_dot = {
+            add_padding = false,
+          },
+          marker_parenthesis = {
+            add_padding = false,
+          },
+          ---_
         },
-      },
-    },
+      }
+    end,
   },
   {
     "epwalsh/obsidian.nvim",

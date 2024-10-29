@@ -38,12 +38,26 @@ vim.api.nvim_create_autocmd("FileType", {
       "<esc><cmd>'<,'>!pandoc --from markdown-auto_identifiers -t jira --columns=999 --wrap=none<cr>",
       { desc = "Format for jira", buffer = true }
     )
-    vim.keymap.set({ "n" }, "<leader>cp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Toggle MarkdownPreview" })
-    -- vim.keymap.set(
-    --   "v",
-    --   "<leader>mJ",
-    --   "<cmd>'<,'>!pandoc --from markdown-auto_identifiers -t jira --columns=999 --wrap=none<cr>gvV\"+y",
-    --   { desc = "Convert selected text to jira format, yank, and undo" }
-    -- )
+    vim.keymap.set(
+      { "n" },
+      "<leader>cp",
+      "<cmd>MarkdownPreviewToggle<cr>",
+      { desc = "Toggle MarkdownPreview", buffer = true }
+    )
+    require("which-key").add({
+      { "<leader>um", group = "markdown", buffer = true },
+    })
+    vim.keymap.set(
+      { "n" },
+      "<leader>umh",
+      "<cmd>Markview hybridToggle<cr>",
+      { desc = "Toggle Markview hybrid mode", buffer = true }
+    )
+    vim.keymap.set(
+      { "n" },
+      "<leader>ums",
+      "<cmd>Markview splitToggle<cr>",
+      { desc = "Toggle Markview split view", buffer = true }
+    )
   end,
 })
