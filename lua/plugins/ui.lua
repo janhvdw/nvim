@@ -6,11 +6,12 @@ local function cwdInVault()
 end
 
 return {
+  { "shaunsingh/nord.nvim" },
   { "sainnhe/gruvbox-material" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = cwdInVault() and "gruvbox-material" or "tokyonight-night",
+      colorscheme = cwdInVault() and "gruvbox-material" or "nord",
     },
   },
   {
