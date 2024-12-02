@@ -90,8 +90,8 @@ return {
       },
       daily_notes = {
         folder = "dailies",
-        alias_format = "%A, %Y-%m-%d (CW%V)",
-        -- template = "daily.md",
+        alias_format = "%A, %Y-%m-%d (W%V)",
+        template = "daily",
       },
       mappings = {
         -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
@@ -162,6 +162,17 @@ return {
         --   -- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
         --   -- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
         -- },
+      },
+      templates = {
+        folder = "templates",
+        substitutions = {
+          week = function()
+            return os.date("%V")
+          end,
+          year = function()
+            return os.date("%Y")
+          end,
+        },
       },
       wiki_link_func = function(opts)
         if opts.label ~= opts.path then
