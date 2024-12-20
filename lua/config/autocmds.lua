@@ -59,5 +59,6 @@ vim.api.nvim_create_autocmd("FileType", {
       "<cmd>Markview splitToggle<cr>",
       { desc = "Toggle Markview split view", buffer = true }
     )
+    vim.opt_local.spell = false
   end,
 })
