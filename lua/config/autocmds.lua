@@ -59,6 +59,18 @@ vim.api.nvim_create_autocmd("FileType", {
       "<cmd>Markview splitToggle<cr>",
       { desc = "Toggle Markview split view", buffer = true }
     )
+    vim.keymap.set(
+      { "n" },
+      "<leader>oj",
+      "a[](<c-r>+)<esc>yT/F[pE",
+      { desc = "Add formatted JIRA link", buffer = true }
+    )
+    vim.keymap.set(
+      { "n" },
+      "<leader>op",
+      'a[](<c-r>+)<esc>"nyT/2F/yT/F[pa/PR-<c-r>n<esc>E',
+      { desc = "Add formatted Azure PR link", buffer = true }
+    )
     vim.opt_local.spell = false
   end,
 })
