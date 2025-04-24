@@ -8,7 +8,9 @@ return {
     opts = function()
       local presets = require("markview.presets")
       return {
-        hybrid_modes = { "n" },
+        preview = {
+          hybrid_modes = { "n" },
+        },
         checkboxes = vim.tbl_deep_extend("force", presets.checkboxes.nerd, {
           custom = {
             {
@@ -28,42 +30,42 @@ return {
             },
           },
         }),
+        markdown = {
+          list_items = {
+            ---+ ${class, List items}
+            enable = true,
+            indent_size = 2,
+            shift_width = 2,
 
-        list_items = {
-          ---+ ${class, List items}
-          enable = true,
-          indent_size = 2,
-          shift_width = 2,
+            marker_minus = {
+              add_padding = false,
+              text = "•",
+              hl = "MarkviewListItemMinus",
+            },
+            marker_plus = {
+              add_padding = false,
+              text = "‣",
+              hl = "MarkviewListItemPlus",
+            },
 
-          marker_minus = {
-            add_padding = false,
-            text = "•",
-            hl = "MarkviewListItemMinus",
+            marker_star = {
+              add_padding = false,
+              text = "⚝",
+              hl = "MarkviewListItemStar",
+            },
+            marker_dot = {
+              add_padding = false,
+            },
+            marker_parenthesis = {
+              add_padding = false,
+            },
           },
-          marker_plus = {
-            add_padding = false,
-            text = "‣",
-            hl = "MarkviewListItemPlus",
-          },
-
-          marker_star = {
-            add_padding = false,
-            text = "⚝",
-            hl = "MarkviewListItemStar",
-          },
-          marker_dot = {
-            add_padding = false,
-          },
-          marker_parenthesis = {
-            add_padding = false,
-          },
-          ---_
         },
       }
     end,
   },
   {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
     event = {
@@ -76,7 +78,7 @@ return {
       { "<leader>odm", "<cmd>ObsidianTomorrow<cr>", desc = "Open daily not for tomorrow" },
       { "<leader>odd", "<cmd>ObsidianDailies -30 31<cr>", desc = "Daily note picker" },
     },
-    dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp", "nvim-telescope/telescope.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim", "folke/snacks.nvim", "Saghen/blink.cmp" },
     opts = {
       workspaces = {
         {
@@ -92,6 +94,13 @@ return {
         folder = "dailies",
         alias_format = "%A, %Y-%m-%d (W%V)",
         template = "daily",
+      },
+      completion = {
+        nvim_cmp = false,
+        blink = true,
+      },
+      picker = {
+        name = "snacks.pick",
       },
       mappings = {
         -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.

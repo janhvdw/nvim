@@ -1,7 +1,5 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.ai.copilot",
-    "lazyvim.plugins.extras.ai.copilot-chat",
     "lazyvim.plugins.extras.coding.luasnip",
     "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.dap.core",
@@ -19,14 +17,16 @@
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.terraform",
+    "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.rest"
   ],
+  "install_version": 7,
   "news": {
-    "NEWS.md": "7429"
+    "NEWS.md": "10960"
   },
-  "version": 7
+  "version": 8
 }
