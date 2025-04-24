@@ -1,5 +1,6 @@
 -- requires on java extra from lazy vim
 return {
+  -- { "nvim-java/nvim-java" },
   {
     "mfussenegger/nvim-jdtls",
     opts = {
