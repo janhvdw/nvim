@@ -4,7 +4,7 @@ return {
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = function()
       local presets = require("markview.presets")
       return {
@@ -76,9 +76,9 @@ return {
       { "<leader>odt", "<cmd>ObsidianToday<cr>", desc = "Open daily not for today" },
       { "<leader>ody", "<cmd>ObsidianYesterday<cr>", desc = "Open daily not for yesterday" },
       { "<leader>odm", "<cmd>ObsidianTomorrow<cr>", desc = "Open daily not for tomorrow" },
-      { "<leader>odd", "<cmd>ObsidianDailies -30 31<cr>", desc = "Daily note picker" },
+      { "<leader>odd", "<cmd>ObsidianDailies -14 15<cr>", desc = "Daily note picker" },
     },
-    dependencies = { "nvim-lua/plenary.nvim", "folke/snacks.nvim", "Saghen/blink.cmp" },
+    dependencies = { "nvim-lua/plenary.nvim", "folke/snacks.nvim", "Saghen/blink.cmp", "OXY2DEV/markview.nvim" },
     opts = {
       workspaces = {
         {
@@ -101,77 +101,20 @@ return {
       },
       picker = {
         name = "snacks.pick",
-      },
-      mappings = {
-        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-        ["gf"] = {
-          action = function()
-            return require("obsidian").util.gf_passthrough()
-          end,
-          opts = { noremap = false, expr = true, buffer = true, desc = "Follow link" },
+        note_mappings = {
+          -- Create a new note from your query.
+          new = "<C-x>",
+          -- Insert a link to the selected note.
+          insert_link = "<C-l>",
         },
-        -- Toggle check-boxes.
-        ["<leader>oc"] = {
-          action = function()
-            return require("obsidian").util.toggle_checkbox()
-          end,
-          opts = { buffer = true, desc = "Toggle checkbox" },
-        },
-        ["<leader>ox"] = {
-          action = "<cmd>ObsidianOpen<cr>",
-          opts = { buffer = true, desc = "Open in Obsidian" },
-        },
-        ["<leader>on"] = {
-          action = "<cmd>ObsidianNew<cr>",
-          opts = { desc = "Create a new note" },
-        },
-        ["<leader>oo"] = {
-          action = "<cmd>ObsidianFollowLink<cr>",
-          opts = { desc = "Follow Link" },
-        },
-        ["<leader>ol"] = {
-          action = "<cmd>ObsidianLink<cr>",
-          opts = { desc = "Link selected text" },
-        },
-        ["<leader>oL"] = {
-          action = "<cmd>ObsidianLinks<cr>",
-          opts = { desc = "Open picker with all links in buffer" },
-        },
-        ["<leader>os"] = {
-          action = "<cmd>ObsidianSearch<cr>",
-          opts = { desc = "Search for a note" },
-        },
-        ["<leader>of"] = {
-          action = "<cmd>ObsidianQuickSwitch<cr>",
-          opts = { desc = "Search for a note" },
-        },
-        ["<leader>ot"] = {
-          action = "<cmd>ObsidianTags<cr>",
-          opts = { desc = "Pick tag search by" },
-        },
-        ["<leader>ob"] = {
-          action = "<cmd>ObsidianBacklinks<cr>",
-          opts = { desc = "Search back links" },
-        },
-        ["<leader>oi"] = {
-          action = "<cmd>ObsidianPasteImg<cr>",
-          opts = { desc = "Paste image" },
+        tag_mappings = {
+          -- Add tag(s) to current note.
+          tag_note = "<C-x>",
+          -- Insert a tag at the current location.
+          insert_tag = "<C-l>",
         },
       },
-      ui = {
-        enable = false,
-        -- checkboxes = {
-        --   -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-        --   [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-        --   ["x"] = { char = "", hl_group = "ObsidianDone" },
-        --   [">"] = { char = "", hl_group = "ObsidianRightArrow" },
-        --   ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
-        --   ["!"] = { char = "", hl_group = "ObsidianImportant" },
-        --   -- Replace the above with this if you don't have a patched font:
-        --   -- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
-        --   -- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
-        -- },
-      },
+      ui = { enable = false },
       templates = {
         folder = "templates",
         substitutions = {
@@ -210,8 +153,7 @@ return {
     config = function(_, opts)
       vim.o.conceallevel = 2
       require("obsidian").setup(opts)
-      vim.keymap.set("v", "<leader>ol", "<cmd>'<,'>ObsidianLink<cr>", { desc = "Link selected text" })
-      vim.keymap.set("v", "<leader>oe", "<cmd>'<,'>ObsidianExtractNote<cr>", { desc = "Extract Note" })
+      require("which-key").add({ "<leader>o", group = "obsidian" })
     end,
   },
 }
