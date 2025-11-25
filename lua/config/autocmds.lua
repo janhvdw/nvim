@@ -91,8 +91,8 @@ vim.api.nvim_create_autocmd("User", {
 
     -- Open
     vim.keymap.set({ "n" }, "<leader>oo", "<cmd>Obsidian follow_link<cr>", { buffer = ev.buf, desc = "Open link" })
-    vim.keymap.set({ "n" }, "<leader>oOl", "<cmd>Obsidian follow_link vsplit", { buffer = ev.buf, desc = "vsplit" })
-    vim.keymap.set({ "n" }, "<leader>oOj", "<cmd>Obsidian follow_link hsplit", { buffer = ev.buf, desc = "hsplit" })
+    vim.keymap.set({ "n" }, "<leader>oOl", "<cmd>Obsidian follow_link vsplit<cr>", { buffer = ev.buf, desc = "vsplit" })
+    vim.keymap.set({ "n" }, "<leader>oOj", "<cmd>Obsidian follow_link hsplit<cr>", { buffer = ev.buf, desc = "hsplit" })
 
     -- Insert
     vim.keymap.set({ "n" }, "<leader>oii", "<cmd>Obsidian paste_img<cr>", { buffer = ev.buf, desc = "Image" })
