@@ -1,3 +1,4 @@
+local helpers = require("helpers")
 return {
   -- Disable render markdown in favour of Obsidian.nvim ui
   { "MeanderingProgrammer/render-markdown.nvim", enabled = false },
@@ -115,6 +116,18 @@ return {
         },
       },
       ui = { enable = false },
+      attachments = {
+        img_text_func = function(path)
+          local format_string = {
+            markdown = "![](%s)",
+            wiki = "![[%s]]",
+          }
+          local relative_path = vim.fn.fnamemodify(tostring(path), ":.")
+
+          local style = Obsidian.opts.preferred_link_style
+          return string.format(format_string[style], relative_path)
+        end,
+      },
       templates = {
         folder = "templates",
         substitutions = {
