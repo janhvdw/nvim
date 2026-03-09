@@ -5,32 +5,36 @@ return {
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    enabled = true,
+    dependencies = { "nvim-mini/mini.icons", "saghen/blink.cmp" },
     opts = function()
       local presets = require("markview.presets")
       return {
         preview = {
           hybrid_modes = { "n" },
+          icon_provider = "mini",
         },
-        checkboxes = vim.tbl_deep_extend("force", presets.checkboxes.nerd, {
-          custom = {
-            {
-              match_string = "-",
-              text = "",
-              hl = "MarkviewCheckboxPending",
-            },
-            {
-              match_string = ">",
-              text = "",
-              hl = "MarkviewCheckboxProgress",
-            },
-            {
-              match_string = "~",
-              text = "",
-              hl = "MarkviewCheckboxCancelled",
+        markdown_inline = {
+          checkboxes = {
+            custom = {
+              {
+                match_string = "-",
+                text = "",
+                hl = "MarkviewCheckboxPending",
+              },
+              {
+                match_string = ">",
+                text = "",
+                hl = "MarkviewCheckboxProgress",
+              },
+              {
+                match_string = "~",
+                text = "",
+                hl = "MarkviewCheckboxCancelled",
+              },
             },
           },
-        }),
+        },
         markdown = {
           list_items = {
             ---+ ${class, List items}
