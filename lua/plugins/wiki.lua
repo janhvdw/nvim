@@ -78,13 +78,14 @@ return {
     },
     cmd = "ObsidianWorkspace",
     keys = {
-      { "<leader>odt", "<cmd>ObsidianToday<cr>", desc = "Open daily not for today" },
-      { "<leader>ody", "<cmd>ObsidianYesterday<cr>", desc = "Open daily not for yesterday" },
-      { "<leader>odm", "<cmd>ObsidianTomorrow<cr>", desc = "Open daily not for tomorrow" },
-      { "<leader>odd", "<cmd>ObsidianDailies -14 15<cr>", desc = "Daily note picker" },
+      { "<leader>odt", "<cmd>Obsidian today<cr>", desc = "Open daily not for today" },
+      { "<leader>ody", "<cmd>Obsidian yesterday<cr>", desc = "Open daily not for yesterday" },
+      { "<leader>odm", "<cmd>Obsidian tomorrow<cr>", desc = "Open daily not for tomorrow" },
+      { "<leader>odd", "<cmd>Obsidian dailies -14 15<cr>", desc = "Daily note picker" },
     },
     dependencies = { "nvim-lua/plenary.nvim", "folke/snacks.nvim", "Saghen/blink.cmp", "OXY2DEV/markview.nvim" },
     opts = {
+      legacy_commands = false,
       workspaces = {
         {
           name = "personal",
