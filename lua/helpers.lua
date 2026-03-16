@@ -9,9 +9,15 @@ local is_linux = not is_wsl and not is_mac
 
 local is_windows = vim.fn.has("win32") == 1
 
+local function cwd_in_vault()
+  local re = vim.regex("^" .. vim.fn.expand("~/vaults/"))
+  return not not re:match_str(vim.fn.getcwd())
+end
+
 return {
   is_wsl = is_wsl,
   is_mac = is_mac,
   is_linux = is_linux,
   is_windows = is_windows,
+  cwd_in_vault = cwd_in_vault,
 }

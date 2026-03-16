@@ -5,7 +5,9 @@ return {
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
-    enabled = true,
+    enabled = function()
+      return not helpers.cwd_in_vault()
+    end,
     dependencies = { "nvim-mini/mini.icons", "saghen/blink.cmp" },
     opts = function()
       local presets = require("markview.presets")
@@ -120,7 +122,7 @@ return {
           insert_tag = "<C-l>",
         },
       },
-      ui = { enable = false },
+      ui = { enable = true },
       attachments = {
         img_text_func = function(path)
           local format_string = {

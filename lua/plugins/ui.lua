@@ -1,9 +1,6 @@
-vim.g.material_style = "darker"
+local cwd_in_vault = require("helpers").cwd_in_vault
 
-local function cwdInVault()
-  local re = vim.regex("^" .. vim.fn.expand("~/vaults/"))
-  return not not re:match_str(vim.fn.getcwd())
-end
+vim.g.material_style = "darker"
 
 return {
   { "shaunsingh/nord.nvim" },
@@ -11,7 +8,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = cwdInVault() and "gruvbox-material" or "nord",
+      colorscheme = cwd_in_vault() and "gruvbox-material" or "nord",
     },
   },
   {
