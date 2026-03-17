@@ -5,9 +5,6 @@ return {
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
-    enabled = function()
-      return not helpers.cwd_in_vault()
-    end,
     dependencies = { "nvim-mini/mini.icons", "saghen/blink.cmp" },
     opts = function()
       local presets = require("markview.presets")
@@ -16,25 +13,21 @@ return {
           hybrid_modes = { "n" },
           icon_provider = "mini",
         },
+        --@type markview.config.markdown_inline
         markdown_inline = {
           checkboxes = {
-            custom = {
-              {
-                match_string = "-",
-                text = "",
-                hl = "MarkviewCheckboxPending",
-              },
-              {
-                match_string = ">",
-                text = "",
-                hl = "MarkviewCheckboxProgress",
-              },
-              {
-                match_string = "~",
-                text = "",
-                hl = "MarkviewCheckboxCancelled",
-              },
-            },
+            checked = { text = "󰗠", hl = "MarkviewCheckboxChecked", scope_hl = "MarkviewCheckboxChecked" },
+            unchecked = { text = "󰄰", hl = "MarkviewCheckboxUnchecked", scope_hl = "MarkviewCheckboxUnchecked" },
+
+            ["/"] = { text = "󱎖", hl = "MarkviewCheckboxPending" },
+            [">"] = { text = "", hl = "MarkviewCheckboxCancelled" },
+            ["<"] = { text = "󰃖", hl = "MarkviewCheckboxProgress" },
+            ["-"] = { text = "󰍶", hl = "MarkviewCheckboxCancelled", scope_hl = "MarkviewCheckboxStriked" },
+            ["~"] = { text = "󰍶", hl = "MarkviewCheckboxCancelled", scope_hl = "MarkviewCheckboxStriked" },
+
+            ["?"] = { text = "󰋗", hl = "MarkviewCheckboxPending" },
+            ["!"] = { text = "󰀦", hl = "MarkviewCheckboxUnchecked" },
+            ["*"] = { text = "󰓎", hl = "MarkviewCheckboxPending" },
           },
         },
         markdown = {
@@ -73,18 +66,10 @@ return {
   },
   {
     "obsidian-nvim/obsidian.nvim",
-    version = "*", -- recommended, use latest release instead of latest commit
-    lazy = true,
-    event = {
-      "BufReadPre " .. vim.fn.expand("~") .. "/vaults/**.md",
-    },
-    cmd = "ObsidianWorkspace",
-    keys = {
-      { "<leader>odt", "<cmd>Obsidian today<cr>", desc = "Open daily not for today" },
-      { "<leader>ody", "<cmd>Obsidian yesterday<cr>", desc = "Open daily not for yesterday" },
-      { "<leader>odm", "<cmd>Obsidian tomorrow<cr>", desc = "Open daily not for tomorrow" },
-      { "<leader>odd", "<cmd>Obsidian dailies -14 15<cr>", desc = "Daily note picker" },
-    },
+    version = "*",
+    cond = function()
+      return helpers.iscwdinvault()
+    end,
     dependencies = { "nvim-lua/plenary.nvim", "folke/snacks.nvim", "Saghen/blink.cmp", "OXY2DEV/markview.nvim" },
     opts = {
       legacy_commands = false,
@@ -122,7 +107,9 @@ return {
           insert_tag = "<C-l>",
         },
       },
-      ui = { enable = true },
+      ui = {
+        enbled = true,
+      },
       attachments = {
         img_text_func = function(path)
           local format_string = {
@@ -171,7 +158,6 @@ return {
       end,
     },
     config = function(_, opts)
-      vim.o.conceallevel = 2
       require("obsidian").setup(opts)
       require("which-key").add({ "<leader>o", group = "obsidian" })
     end,

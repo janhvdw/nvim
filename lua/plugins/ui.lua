@@ -1,4 +1,4 @@
-local cwd_in_vault = require("helpers").cwd_in_vault
+local cwd_in_vault = require("helpers").iscwdinvault
 
 vim.g.material_style = "darker"
 

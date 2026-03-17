@@ -6,15 +6,6 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("local_config_" .. name, { clear = true })
 end
 
--- Highlight on yank
--- vim.api.nvim_create_autocmd("TextYankPost", {
---   group = augroup("yank_to_clipboard"),
---   callback = function(ev)
---     nvim.api.get
---     print(string.format("event fired: %s", vim.inspect(ev.data)))
---   end,
--- })
-
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("keymap_for_http"),
   pattern = { "http" },
@@ -67,17 +58,10 @@ vim.api.nvim_create_autocmd("User", {
   group = augroup("keymap_for_obsidian"),
   pattern = "ObsidianNoteEnter",
   callback = function(ev)
-    -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+    -- Overrides the `gf` mapping to work on Markdown/wiki links within your vault.
     vim.keymap.set({ "n" }, "gf", function()
       return require("obsidian").util.gf_passthrough()
     end, { noremap = false, expr = true, buffer = ev.buf, desc = "Follow link" })
-    vim.keymap.set({ "n" }, "<leader>on", "<cmd>Obsidian new<cr>", { buffer = ev.buf, desc = "New note" })
-    vim.keymap.set(
-      { "n" },
-      "<leader>oN",
-      "<cmd>Obsidian new_from_template<cr>",
-      { buffer = ev.buf, desc = "New note from template" }
-    )
     vim.keymap.set({ "n" }, "<leader>oc", "<cmd>Obsidian toc<cr>", { buffer = ev.buf, desc = "Pick from ToC" })
     vim.keymap.set({ "n" }, "<leader>ol", "<cmd>Obsidian links<cr>", { buffer = ev.buf, desc = "Pick link" })
     vim.keymap.set({ "v" }, "<leader>oL", "<cmd>Obsidian link<cr>", { buffer = ev.buf, desc = "Link selected text" })
@@ -106,9 +90,7 @@ vim.api.nvim_create_autocmd("User", {
     )
 
     -- Find
-    vim.keymap.set({ "n" }, "<leader>ofg", "<cmd>Obsidian search<cr>", { buffer = ev.buf, desc = "Find with grep" })
-    vim.keymap.set({ "n" }, "<leader>off", "<cmd>Obsidian quick_switch<cr>", { buffer = ev.buf, desc = "File" })
+    -- Backlinks will only work while you are in a note, other find commands are set whenever you are in a vault.
     vim.keymap.set({ "n" }, "<leader>ofb", "<cmd>Obsidian backlinks<cr>", { buffer = ev.buf, desc = "Backlinks" })
-    vim.keymap.set({ "n" }, "<leader>oft", "<cmd>Obsidian tags<cr>", { buffer = ev.buf, desc = "Tag" })
   end,
 })

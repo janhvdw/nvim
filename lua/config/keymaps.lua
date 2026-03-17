@@ -19,3 +19,17 @@ vim.keymap.set({ "n" }, "gL", "`[V`]", { desc = "Select last yanked or changed t
 vim.keymap.set({ "n" }, "<leader>by", "<cmd>let @+=expand('%:.')<cr>", { desc = "Yank file path relative to root" })
 vim.keymap.set({ "n" }, "<leader>bY", "<cmd>let @+=expand('%:p')<cr>", { desc = "Yank absolute file path" })
 vim.keymap.set({ "n" }, "<leader>bn", "<cmd>let @+=expand('%:t')<cr>", { desc = "Yank filename of current buffer" })
+
+if require("helpers").iscwdinvault() then
+  vim.keymap.set({ "n" }, "<leader>odt", "<cmd>Obsidian today<cr>", { desc = "Open daily not for today" })
+  vim.keymap.set({ "n" }, "<leader>ody", "<cmd>Obsidian yesterday<cr>", { desc = "Open daily not for yesterday" })
+  vim.keymap.set({ "n" }, "<leader>odm", "<cmd>Obsidian tomorrow<cr>", { desc = "Open daily not for tomorrow" })
+  vim.keymap.set({ "n" }, "<leader>odd", "<cmd>Obsidian dailies -14 15<cr>", { desc = "Daily note picker" })
+  vim.keymap.set({ "n" }, "<leader>on", "<cmd>Obsidian new<cr>", { desc = "New note" })
+  vim.keymap.set({ "n" }, "<leader>oN", "<cmd>Obsidian new_from_template<cr>", { desc = "New note from template" })
+
+  require("which-key").add({ "<leader>of", group = "find" })
+  vim.keymap.set({ "n" }, "<leader>ofg", "<cmd>Obsidian search<cr>", { desc = "Find with grep" })
+  vim.keymap.set({ "n" }, "<leader>off", "<cmd>Obsidian quick_switch<cr>", { desc = "File" })
+  vim.keymap.set({ "n" }, "<leader>oft", "<cmd>Obsidian tags<cr>", { desc = "Tag" })
+end
