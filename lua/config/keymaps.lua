@@ -23,7 +23,7 @@ vim.keymap.set({ "n" }, "<leader>bn", "<cmd>let @+=expand('%:t')<cr>", { desc = 
 
 -- Markdown specific keymaps
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("keymap_for_markdown"),
+  group = require("helpers").augroup("keymap_for_markdown"),
   pattern = { "markdown" },
   callback = function()
     vim.keymap.set(
