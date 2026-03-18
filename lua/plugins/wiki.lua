@@ -68,7 +68,7 @@ return {
     "obsidian-nvim/obsidian.nvim",
     version = "*",
     cond = function()
-      return helpers.iscwdinvault()
+      return helpers.is_cwd_in_vault()
     end,
     dependencies = { "nvim-lua/plenary.nvim", "folke/snacks.nvim", "Saghen/blink.cmp", "OXY2DEV/markview.nvim" },
     opts = {
@@ -158,8 +158,8 @@ return {
       end,
     },
     config = function(_, opts)
+      require("config.keymaps").set_obsidian_keymap()
       require("obsidian").setup(opts)
-      require("which-key").add({ "<leader>o", group = "obsidian" })
     end,
   },
 }

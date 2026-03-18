@@ -1,10 +1,11 @@
-local cwd_in_vault = require("helpers").iscwdinvault
+local cwd_in_vault = require("helpers").is_cwd_in_vault
 
 vim.g.material_style = "darker"
 
 return {
   { "shaunsingh/nord.nvim" },
   { "sainnhe/gruvbox-material" },
+  { "vague-theme/vague.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
