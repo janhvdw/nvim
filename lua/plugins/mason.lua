@@ -7,7 +7,6 @@ return {
         "shellcheck",
         "shfmt",
         "lemminx",
-        "harper-ls",
       },
     },
   },
