@@ -20,6 +20,7 @@ return {
             unchecked = { text = "󰄰", hl = "MarkviewCheckboxUnchecked", scope_hl = "MarkviewCheckboxUnchecked" },
 
             ["/"] = { text = "󱎖", hl = "MarkviewCheckboxPending" },
+            ["|"] = { text = "󱎖", hl = "MarkviewCheckboxPending" },
             [">"] = { text = "", hl = "MarkviewCheckboxCancelled" },
             ["<"] = { text = "󰃖", hl = "MarkviewCheckboxProgress" },
             ["-"] = { text = "󰍶", hl = "MarkviewCheckboxCancelled", scope_hl = "MarkviewCheckboxStriked" },
