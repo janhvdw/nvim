@@ -80,8 +80,8 @@ return {
           path = vim.fn.expand("~") .. "/vaults/personal/",
         },
         {
-          name = "private",
-          path = vim.fn.expand("~") .. "/vaults/private/",
+          name = "pkm",
+          path = vim.fn.expand("~") .. "/vaults/pkm/",
         },
       },
       daily_notes = {
